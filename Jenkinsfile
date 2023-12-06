@@ -29,7 +29,7 @@ pipeline{
         stage('Deploy App on k8s') {
             steps {
                sshagent(['k8s']) {
-               sh "scp -o StrictHostKeyChecking=no nodejsapp.yaml goveadmin@192.168.29.140:/home"
+               sh "scp -o StrictHostKeyChecking=no nodejsapp.yaml goveadmin@192.168.29.140:/home/goveadmin"
                script {
                   try{
                       sh "ssh goveadmin@192.168.29.140 kubectl create -f ."
