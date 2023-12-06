@@ -19,8 +19,10 @@ pipeline{
         stage('Push Docker Image') {
             steps {
                 script {
-                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                 sh 'docker push devops/nodejsapp-1.0:latest'
+                 withCredentials([usernamePassword(credentialsId: 'docker-hub-sankar', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                    // Your Docker commands here
+                    sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                    sh 'docker push devops/nodejsapp-1.0:latest'
                  }  
             }
         }
