@@ -11,18 +11,15 @@ pipeline{
     //     }
         stage('Build Docker Image') {
             steps {
-                script {
-                  sh 'docker build -t devops/nodejsapp-1.0:latest .'
-                }
+                  sh 'docker build -t sankar0812/nodejsapp-1.0:latest .'
             }
         }
         stage('Push Docker Image') {
             steps {
-                script {
                  withCredentials([usernamePassword(credentialsId: 'docker-hub-sankar', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
                     // Your Docker commands here
                     sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
-                    sh 'docker push devops/nodejsapp-1.0:latest'
+                    sh 'docker push sankar0812/nodejsapp-1.0:latest'
                  }  
             }
         }
