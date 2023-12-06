@@ -11,7 +11,9 @@ pipeline{
     //     }
         stage('Build Docker Image') {
             steps {
-                  sh 'docker build -t sankar0812/nodejsapp-1.0:latest .'
+                // Install Buildx
+                  sh 'docker buildx create --use'
+                  sh 'docker buildx build -t sankar0812/nodejsapp-1.0:latest .'
             }
         }
         stage('Push Docker Image') {
