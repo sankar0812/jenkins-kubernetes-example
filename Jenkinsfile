@@ -3,12 +3,12 @@ pipeline{
     environment{
      DOCKERHUB_CREDENTIALS = credentials('docker-hub-sankar')
     }
-    stages {
-        stage('SCM Checkout') {
-            steps{
-              git 'https://github.com/sankar0812/jenkins-kubernetes-example.git'
-            }
-        }
+    // stages {
+    //     stage('SCM Checkout') {
+    //         steps{
+    //           git 'https://github.com/sankar0812/jenkins-kubernetes-example.git'
+    //         }
+    //     }
         stage('Build Docker Image') {
             steps {
                 script {
