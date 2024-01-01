@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "local" }
+    agent { label "test" }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub-sankar')
     }
